@@ -1,5 +1,7 @@
 package org.dimigo.basic;
 
+//2015.3.24 shift
+
 public class Condition {
 
 	public static void main(String[] args) {
@@ -23,7 +25,7 @@ public class Condition {
 		
 		if (distance>10) {
 			if (car=="고속버스")
-				tax+=300*(distance/10);
+				tax+=300*(distance/10); 
 			else if (car=="경차" || car=="그 외")
 				tax+=200*(distance/10);
 		}
