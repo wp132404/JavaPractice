@@ -28,8 +28,6 @@ public class Score {
 			.append("평균 : ").append((double)(math + english + korean)/3 + "점\n");
 			
 		System.out.println(sb);
-			
-		int a;
 		
 		
 	}
