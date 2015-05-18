@@ -29,7 +29,7 @@ public class Score {
 			
 		System.out.println(sb);
 			
-			
+		int a;
 		
 		
 	}
