@@ -2,6 +2,8 @@ package org.dimigo.inheritance;
 
 public class Circle extends Figure {
 
+	
+	
 	private int radius;
 	
 	public Circle(int radius) {
@@ -12,6 +14,11 @@ public class Circle extends Figure {
 		this.radius = radius;
 	}
 	
+	
+	protected void printCenter() {
+		System.out.print("원 ");
+		super.printCenter();
+	}
 	protected double calcArea() {
 		return (double)radius*(double)radius*Math.PI;
 	}
