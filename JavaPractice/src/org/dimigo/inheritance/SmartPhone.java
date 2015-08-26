@@ -33,6 +33,13 @@ public class SmartPhone {
 			Galaxy g = (Galaxy)this;
 			g.useWirelessCharging();
 		}
+		/*try {
+			IPhone i = (IPhone)this;
+			i.useAirDrop(); 
+		} catch(Exception e) {
+			Galaxy g = (Galaxy)this;
+			g.useWirelessCharging();
+		}*/
 	}
 	public String toString() {
 		return "모델명 : "+ model + " 제조사 : " + company + " 가격 : " + String.format("%,d", price) + "원";
