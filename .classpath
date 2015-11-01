@@ -2,5 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="JavaPractice/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/Projects/Java Projects/JavaPractice/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Projects/Java Projects/JavaPractice/lib/httpclient-4.5.1.jar"/>
+	<classpathentry kind="lib" path="D:/Projects/Java Projects/JavaPractice/lib/httpcore-4.4.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
