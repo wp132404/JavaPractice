@@ -3,10 +3,14 @@
  */
 package org.dimigo.io;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.Writer;
 import java.util.List;
 
@@ -39,22 +43,32 @@ public class NaverSearch {
 	public static void main(String[] args) {		
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		
+		System.out.println("Input:Start");
+		
 	    try {
-	    	String keyword = null;
+	    	String keyword = "";
 	    	
-	    	try(InputStream is = System.in) {
+	    	try(InputStream is = System.in;
+	    			Reader r = new InputStreamReader(is);
+	    			BufferedReader br = new BufferedReader(r)) {
+	    		 
+	    		/*int result;
 	    		
-	    		int result;
-	    		
-	    		
-	    		while((result = is.read())!='\n') {
+	    		while((result = r.read())!='\n') {
 	    			keyword += (char)result;
-	    		}
+	    		}*/
+	    		
+	    		keyword = br.readLine();
+	    		
+	    		System.out.println(keyword);
+	    		
 	    				
 	    	} catch(Exception e) {
 	    		e.printStackTrace();
 	    	}
 	    
+	    	System.out.println("Input:End / Http:Start");
+	    	
 	    	StringBuffer sb = new StringBuffer(NAVER_OPEN_URL);
 	    	sb.append("?key=").append(SEARCH_KEY).append("&query=").append(keyword)
 	    	  .append("&display=10&start=1&target=movie");
@@ -87,6 +101,8 @@ public class NaverSearch {
 	        
 	        System.out.println(movieList);
 	        
+	        System.out.println("Http:End / Output:Start");
+	        
 	        /********************************************************
 	         * 검색된 순서대로 출력하기
 	         * 1. 스타워즈 에피소드 8 - [오스카 아이삭, 베네치오 델 토로]
@@ -94,7 +110,7 @@ public class NaverSearch {
 	         * 3. 스타워즈: 깨어난 포스 - [해리슨 포드, 마크 해밀, 캐리 피셔, .. ]
 	         ********************************************************/
 	        
-	        
+	       
 	        
 	        try(Writer w = new FileWriter("files/output1.txt");
 	        		BufferedWriter bw = new BufferedWriter(w)) {
@@ -102,15 +118,21 @@ public class NaverSearch {
 	        	int num = 1;
 	        	for(Movie m : movieList) {
 	        		System.out.print(num + ". " + m.getTitle() + " - [");
+	        		bw.write(num + ". " + m.getTitle() + " - [");
 	        		for(String s : m.getActors()) {
 	        			System.out.print(s + ", ");
+	        			bw.write(s + ", ");
 	        		}
 	        		System.out.println("]");
+	        		bw.write("]\n");
+	        		num++;
 	        	}
-	       
+	        	
 	        } catch(Exception e) {
 	        	e.printStackTrace();
 	        }
+	        
+	        System.out.println("Output:End");
 	        
 	        
 	    } catch (IOException e) {
